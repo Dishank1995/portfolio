@@ -14,7 +14,9 @@ body {
   padding-top: 70px; /* space for fixed navbar */
 }
 
-/* NAVBAR */
+/* =======================
+   NAVBAR (DESKTOP + MOBILE)
+   ======================= */
 .navbar {
   position: fixed;
   top: 0;
@@ -34,6 +36,7 @@ body {
   font-size: 20px;
 }
 
+/* Hamburger */
 .menu-toggle {
   display: none;
   font-size: 26px;
@@ -41,6 +44,7 @@ body {
   color: #e5e7eb;
 }
 
+/* Desktop menu */
 .nav-links {
   display: flex;
   list-style: none;
@@ -50,19 +54,18 @@ body {
 .nav-links a {
   color: #e5e7eb;
   text-decoration: none;
+  font-size: 15px;
 }
 
 .nav-links a:hover {
   color: #38bdf8;
 }
 
-/* BODY OFFSET */
-body {
-  padding-top: 70px;
-}
-
-/* MOBILE MENU */
+/* =======================
+   MOBILE NAVBAR
+   ======================= */
 @media (max-width: 768px) {
+
   .menu-toggle {
     display: block;
   }
@@ -75,16 +78,15 @@ body {
     background: rgba(2, 6, 23, 0.98);
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
     padding: 20px 0;
-    display: none;
+    display: none; /* hidden by default */
   }
 
   .nav-links.active {
     display: flex;
   }
 }
-
 
 /* =======================
    HERO SECTION
@@ -233,7 +235,7 @@ footer {
 }
 
 /* =======================
-   SCROLL ANIMATION (DESKTOP ONLY)
+   SCROLL ANIMATION (DESKTOP)
    ======================= */
 .reveal {
   opacity: 0;
@@ -247,38 +249,10 @@ footer {
 }
 
 /* =======================
-   MOBILE RESPONSIVE
+   MOBILE LAYOUT FIXES
    ======================= */
 @media (max-width: 768px) {
 
-  /* NAVBAR */
-  .logo {
-    font-size: 18px;
-    margin-right: 10px;
-  }
-
-  .nav-links {
-    flex-direction: row;
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 14px;
-    scrollbar-width: none;
-  }
-
-  .nav-links::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav-links li {
-    flex-shrink: 0;
-  }
-
-  .nav-links a {
-    font-size: 14px;
-    padding: 6px 10px;
-  }
-
-  /* HERO */
   .hero {
     padding: 90px 15px;
   }
@@ -304,7 +278,6 @@ footer {
     text-align: center;
   }
 
-  /* SECTIONS */
   .section {
     padding: 60px 15px;
   }
@@ -313,7 +286,6 @@ footer {
     text-align: center;
   }
 
-  /* SKILLS */
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -323,7 +295,6 @@ footer {
     padding: 12px;
   }
 
-  /* PROJECTS */
   .project-card {
     padding: 18px;
   }
@@ -336,13 +307,12 @@ footer {
     font-size: 13px;
   }
 
-  /* CONTACT */
   #contact p {
     text-align: center;
     word-break: break-word;
   }
 
-  /* DISABLE ANIMATION ON MOBILE */
+  /* Disable reveal animation on mobile */
   .reveal {
     opacity: 1;
     transform: none;
