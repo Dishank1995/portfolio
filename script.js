@@ -1,77 +1,106 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* =======================
-     HAMBURGER MENU
+     STICKY NAVBAR ON SCROLL
      ======================= */
-  const menuToggle = document.querySelector(".menu-toggle");
+  const navbar = document.querySelector(".navbar");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("sticky");
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  });
+
+  /* =======================
+     MOBILE MENU TOGGLE
+     ======================= */
+  const menuToggle = document.getElementById("mobile-menu");
   const navLinks = document.querySelector(".nav-links");
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener("click", function () {
       navLinks.classList.toggle("active");
+      // Change icon
+      const icon = menuToggle.querySelector("i");
+      if (navLinks.classList.contains("active")) {
+        icon.classList.replace("fa-bars", "fa-times");
+      } else {
+        icon.classList.replace("fa-times", "fa-bars");
+      }
     });
 
-    // Close menu when a link is clicked (mobile UX)
+    // Close menu when a link is clicked
     navLinks.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("active");
+        menuToggle.querySelector("i").classList.replace("fa-times", "fa-bars");
       });
     });
   }
 
   /* =======================
-     SCROLL REVEAL (DESKTOP)
+     SCROLL REVEAL ANIMATION
      ======================= */
   const reveals = document.querySelectorAll(".reveal");
 
   function revealOnScroll() {
     reveals.forEach(section => {
-      if (section.getBoundingClientRect().top < window.innerHeight - 100) {
+      const windowHeight = window.innerHeight;
+      const revealTop = section.getBoundingClientRect().top;
+      const revealPoint = 150;
+
+      if (revealTop < windowHeight - revealPoint) {
         section.classList.add("active");
       }
     });
   }
 
   window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // run once on load
+  revealOnScroll(); // init on load
 
   /* =======================
      TYPING ANIMATION
      ======================= */
   const typingEl = document.querySelector(".typing");
-  const text = [
-    "Aspiring Software Developer",
-    "Web & Cloud Enthusiast",
-    "Open to Internship Opportunities"
-  ];
+  if (typingEl) {
+    const roles = [
+      "Full Stack Developer",
+      "AI/ML Enthusiast",
+      "Cloud Learner"
+    ];
 
-  let index = 0;
-  let charIndex = 0;
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
 
-  function type() {
-    if (!typingEl) return;
+    function typeEffect() {
+      const currentRole = roles[roleIndex];
+      
+      if (isDeleting) {
+        typingEl.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 50;
+      } else {
+        typingEl.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 100;
+      }
 
-    if (charIndex < text[index].length) {
-      typingEl.textContent += text[index].charAt(charIndex);
-      charIndex++;
-      setTimeout(type, 100);
-    } else {
-      setTimeout(erase, 2000);
+      if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typeSpeed = 500; // Pause before next word
+      }
+
+      setTimeout(typeEffect, typeSpeed);
     }
+
+    typeEffect();
   }
-
-  function erase() {
-    if (!typingEl) return;
-
-    if (charIndex > 0) {
-      typingEl.textContent = text[index].substring(0, charIndex - 1);
-      charIndex--;
-      setTimeout(erase, 50);
-    } else {
-      index = (index + 1) % text.length;
-      setTimeout(type, 500);
-    }
-  }
-
-  type(); // start typing animation
 });
+

@@ -1,181 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Dishank More | Portfolio</title>
+  <title>Dishank Jaywant More | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <h2 class="logo">Dishank</h2>
+  <!-- NAVBAR -->
+  <nav class="navbar sticky">
+    <h2 class="logo">Dishank<span>.</span></h2>
 
-  <!-- Hamburger -->
-  <div class="menu-toggle">☰</div>
-
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <h1>Hi, I'm <span>Dishank More</span></h1>
-  <h3 class="typing"></h3>
-
-  <div class="hero-buttons">
-    <a href="#projects" class="btn-glow">View Projects</a>
-    <a href="Dishank_More_Resume.pdf" download class="btn-outline">
-      Download Resume
-    </a>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section glass reveal">
-  <h2>About Me</h2>
-  <p>
-    I am a Computer Engineering student currently pursuing my Bachelor's degree.
-    I enjoy building web applications, learning backend systems, and working with
-    cloud technologies like AWS. I am actively seeking internship opportunities.
-  </p>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="section reveal">
-  <h2>Skills</h2>
-
-  <div class="skills-category">
-    <h3>Programming</h3>
-    <div class="skills-grid">
-      <div class="skill-card">Python</div>
-      <div class="skill-card">Java</div>
-      <div class="skill-card">C++</div>
-      <div class="skill-card">C</div>
+    <!-- Hamburger -->
+    <div class="menu-toggle" id="mobile-menu">
+      <i class="fas fa-bars"></i>
     </div>
-  </div>
 
-  <div class="skills-category">
-    <h3>Web Development</h3>
-    <div class="skills-grid">
-      <div class="skill-card">HTML</div>
-      <div class="skill-card">CSS</div>
-      <div class="skill-card">JavaScript</div>
-      <div class="skill-card">PHP</div>
-      <div class="skill-card">React</div>
-      <div class="skill-card">Node.js (Learning)</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm <span>Dishank Jaywant More</span></h1>
+      <h2 class="hero-title">Full Stack Developer | AI & Cloud Enthusiast</h2>
+      <p class="hero-subtitle">"Building scalable AI-powered applications and real-time systems"</p>
+      <h3 class="typing-container">I am a <span class="typing"></span></h3>
+
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-glow">View Projects</a>
+        <a href="Dishank_More_Resume.pdf" download class="btn btn-outline">
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="skills-category">
-    <h3>Mobile App Development</h3>
-    <div class="skills-grid">
-      <div class="skill-card">Android Development</div>
+  <!-- ABOUT -->
+  <section id="about" class="section glass reveal">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-container">
+      <p>
+        I am a Computer Engineering student with strong experience in full-stack development, machine learning, and
+        cloud technologies. I enjoy building scalable and user-centric applications that solve real-world problems. I
+        have worked on AI-based systems, real-time communication platforms, and Android applications. I am currently
+        seeking internship opportunities in software development.
+      </p>
     </div>
-  </div>
+  </section>
 
-  <div class="skills-category">
-    <h3>Databases</h3>
-    <div class="skills-grid">
-      <div class="skill-card">MySQL</div>
-      <div class="skill-card">MongoDB</div>
-      <div class="skill-card">DBMS</div>
-      <div class="skill-card">PL/SQL</div>
+  <!-- SKILLS -->
+  <section id="skills" class="section reveal">
+    <h2 class="section-title">Skills & Expertise</h2>
+
+    <div class="skills-wrapper">
+      <div class="skills-category glass">
+        <h3><i class="fas fa-code"></i> Programming</h3>
+        <div class="skills-grid">
+          <div class="skill-card">Java</div>
+          <div class="skill-card">Python</div>
+          <div class="skill-card">C++</div>
+          <div class="skill-card">C</div>
+        </div>
+      </div>
+
+      <div class="skills-category glass">
+        <h3><i class="fas fa-laptop-code"></i> Web</h3>
+        <div class="skills-grid">
+          <div class="skill-card">HTML</div>
+          <div class="skill-card">CSS</div>
+          <div class="skill-card">JavaScript</div>
+          <div class="skill-card">React</div>
+          <div class="skill-card">Node.js</div>
+          <div class="skill-card">FastAPI</div>
+        </div>
+      </div>
+
+      <div class="skills-category glass">
+        <h3><i class="fas fa-mobile-alt"></i> Mobile</h3>
+        <div class="skills-grid">
+          <div class="skill-card">Android Development</div>
+        </div>
+      </div>
+
+      <div class="skills-category glass">
+        <h3><i class="fas fa-database"></i> Database</h3>
+        <div class="skills-grid">
+          <div class="skill-card">MySQL</div>
+          <div class="skill-card">MongoDB</div>
+          <div class="skill-card">Firebase</div>
+        </div>
+      </div>
+
+      <div class="skills-category glass">
+        <h3><i class="fas fa-cloud"></i> Cloud</h3>
+        <div class="skills-grid">
+          <div class="skill-card">AWS EC2</div>
+          <div class="skill-card">AWS S3</div>
+        </div>
+      </div>
+
+      <div class="skills-category glass">
+        <h3><i class="fas fa-tools"></i> Tools</h3>
+        <div class="skills-grid">
+          <div class="skill-card">Git</div>
+          <div class="skill-card">GitHub</div>
+          <div class="skill-card">VS Code</div>
+          <div class="skill-card">Android Studio</div>
+        </div>
+      </div>
+
+      <div class="skills-category glass">
+        <h3><i class="fas fa-gears"></i> Concepts</h3>
+        <div class="skills-grid">
+          <div class="skill-card">OOP</div>
+          <div class="skill-card">SDLC</div>
+          <div class="skill-card">Software Testing</div>
+          <div class="skill-card">DSA</div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="skills-category">
-    <h3>Cloud</h3>
-    <div class="skills-grid">
-      <div class="skill-card">AWS EC2</div>
-      <div class="skill-card">AWS S3</div>
-      <div class="skill-card">Cloud Computing</div>
+  <!-- PROJECTS -->
+  <section id="projects" class="section reveal">
+    <h2 class="section-title">Featured Projects</h2>
+
+    <div class="projects-grid">
+      <div class="project-card glass">
+        <div class="project-info">
+          <h3>MedIntel – AI Clinical Decision Support System</h3>
+          <p>AI-powered healthcare platform with telemedicine, NLP voice input (Hindi & English), and OCR-based medical data extraction.</p>
+          <div class="project-tags">
+            <span>React</span><span>FastAPI</span><span>Node.js</span><span>WebRTC</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card glass">
+        <div class="project-info">
+          <h3>TalentPulse – Employee Attrition Prediction</h3>
+          <p>ML-powered prediction system with ~80% accuracy, featuring interactive dashboards, analytics, and CSV upload system.</p>
+          <div class="project-tags">
+            <span>Python</span><span>FastAPI</span><span>React</span><span>ML</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Dishank1995/talentpulse" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card glass">
+        <div class="project-info">
+          <h3>DineBuddy – Android App</h3>
+          <p>Mess management system for students with real-time updates and integrated GPS navigation.</p>
+          <div class="project-tags">
+            <span>Java</span><span>Firebase</span><span>Android Studio</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Dishank1995/DineBuddy" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card glass">
+        <div class="project-info">
+          <h3>E-Doc Locker – Cloud Platform</h3>
+          <p>Secure cloud platform for document storage featuring multi-factor authentication, encryption, and AWS S3 integration.</p>
+          <div class="project-tags">
+            <span>AWS S3</span><span>Encryption</span><span>Auth</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="skills-category">
-    <h3>Software Engineering</h3>
-    <div class="skills-grid">
-      <div class="skill-card">SDLC</div>
-      <div class="skill-card">Software Testing</div>
+  <!-- EDUCATION -->
+  <section id="education" class="section reveal">
+    <h2 class="section-title">Education</h2>
+    <div class="education-grid">
+      <div class="edu-card glass">
+        <h3>BE Computer Engineering</h3>
+        <h4>PCCOE&R, Pune</h4>
+        <p class="edu-date">2023 - 2027 (Expected)</p>
+        <div class="edu-status">Currently Pursuing</div>
+      </div>
+      <div class="edu-card glass">
+        <h3>Diploma in Computer Engineering</h3>
+        <h4>Government Polytechnic</h4>
+        <p class="edu-date">Completed 2023</p>
+        <div class="edu-score">Aggregate: 92.06%</div>
+      </div>
+      <div class="edu-card glass">
+        <h3>SSC</h3>
+        <h4>Secondary School</h4>
+        <p class="edu-date">Completed 2020</p>
+        <div class="edu-score">Percentage: 83.80%</div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="skills-category">
-    <h3>Tools</h3>
-    <div class="skills-grid">
-      <div class="skill-card">Git</div>
-      <div class="skill-card">GitHub</div>
-      <div class="skill-card">VS Code</div>
-      <div class="skill-card">Eclipse</div>
-      <div class="skill-card">CodeBlocks</div>
-      <div class="skill-card">Android Studio</div>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section reveal">
+    <h2 class="section-title">Work Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item glass">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">March 2026 - Present</div>
+        <div class="timeline-content">
+          <h3>MERN Full Stack Intern</h3>
+          <h4>EduSkills</h4>
+          <p>Building scalable web applications using MERN stack and developing secure REST APIs.</p>
+        </div>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2024</div>
+        <div class="timeline-content">
+          <h3>Java Developer Intern</h3>
+          <h4>Codetech IT Solutions</h4>
+          <p>Developed Java applications using OOP principles and optimized backend algorithms.</p>
+        </div>
+      </div>
+      <div class="timeline-item glass">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2023</div>
+        <div class="timeline-content">
+          <h3>Web Developer Intern</h3>
+          <h4>Suravi Innovative</h4>
+          <p>Built responsive websites and implemented SEO strategies along with CMS features with SEO optimization.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="section reveal">
-  <h2>Projects</h2>
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="section reveal">
+    <h2 class="section-title">Achievements & Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card glass">
+        <i class="fas fa-award"></i>
+        <div>
+          <h3>AWS Cloud Certification</h3>
+          <p>Certified in AWS Cloud Foundations and Infrastructure management.</p>
+        </div>
+      </div>
+      <div class="cert-card glass">
+        <i class="fas fa-award"></i>
+        <div>
+          <h3>Full Stack Mastery</h3>
+          <p>Completed intensive MERN Full Stack Internship (AICTE / EduSkills).</p>
+        </div>
+      </div>
+      <div class="cert-card glass">
+        <i class="fas fa-award"></i>
+        <div>
+          <h3>Academic Excellence</h3>
+          <p>Secured 92.06% in Diploma in Computer Engineering.</p>
+        </div>
+      </div>
+      <div class="cert-card glass">
+        <i class="fas fa-award"></i>
+        <div>
+          <h3>Real-world Impact</h3>
+          <p>Built AI healthcare and HR platforms with real-world utility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="project-card">
-    <h3>TalentPulse</h3>
-    <p>AI-powered employee attrition prediction system with real-time dashboards.</p>
-    <span>Python • FastAPI • React • ML</span>
-    <a href="https://github.com/Dishank1995/talentpulse" target="_blank">GitHub</a>
-  </div>
+  <!-- CONTACT -->
+  <section id="contact" class="section reveal">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-wrapper glass">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>Email: <a href="mailto:dishankmore1995@gmail.com">dishankmore1995@gmail.com</a></span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>Phone: <a href="tel:9309287966">9309287966</a></span>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <span>GitHub: <a href="https://github.com/Dishank1995" target="_blank">github.com/Dishank1995</a></span>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn: <a href="https://www.linkedin.com/in/dishank-more-106ba2222" target="_blank">Dishank More</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="project-card">
-    <h3>Dine Buddy App</h3>
-    <p>Android app for smart mess management with real-time updates.</p>
-    <span>Android • Java • Cloud</span>
-    <a href="https://github.com/Dishank1995/DineBuddy" target="_blank">GitHub</a>
-  </div>
 
-  <div class="project-card">
-    <h3>E-Doc Locker</h3>
-    <p>Cloud-based secure document management system.</p>
-    <span>Android • Java • Cloud</span>
-    <a href="#" target="_blank">GitHub</a>
-  </div>
-</section>
+  <footer>
+    <p>© 2026 Dishank Jaywant More | Crafted with passion</p>
+  </footer>
 
-<!-- CONTACT -->
-<section id="contact" class="section glass reveal">
-  <h2>Contact</h2>
-
-  <p>
-    📧 Email:
-    <a href="mailto:dishankmore1995@gmail.com">
-      dishankmore1995@gmail.com
-    </a>
-  </p>
-
-  <p>
-    🐙 GitHub:
-    <a href="https://github.com/Dishank1995" target="_blank">
-      github.com/Dishank1995
-    </a>
-  </p>
-
-  <p>
-    💼 LinkedIn:
-    <a href="https://www.linkedin.com/in/dishank-more-106ba2222" target="_blank">
-      linkedin.com/in/DishankMore
-    </a>
-  </p>
-</section>
-
-<footer>
-  <p>© 2026 Dishank More</p>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
