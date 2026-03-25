@@ -591,16 +591,6 @@ body {
   overflow: hidden;
 }
 
-.edu-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--primary-color);
-}
-
 .edu-card h3 {
   font-size: 1.4rem;
   color: var(--primary-color);
