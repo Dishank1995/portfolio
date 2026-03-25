@@ -1,139 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* =======================
-     PRELOADER
+     PRELOADER (APPLE STYLE)
      ======================= */
   const preloader = document.getElementById("preloader");
   window.addEventListener("load", () => {
     setTimeout(() => {
-      preloader.classList.add("fade-out");
-    }, 1000);
+      preloader.style.opacity = "0";
+      preloader.style.visibility = "hidden";
+      preloader.style.transition = "opacity 1s ease, visibility 1s";
+    }, 1200);
   });
 
   /* =======================
-     CURSOR TRAIL
+     LIGHT GLOWING CURSOR
      ======================= */
   const cursorDot = document.getElementById("cursor-dot");
-  const cursorOutline = document.getElementById("cursor-outline");
+  if (window.innerWidth > 768) {
+    window.addEventListener("mousemove", (e) => {
+      const posX = e.clientX;
+      const posY = e.clientY;
 
+      cursorDot.style.left = `${posX}px`;
+      cursorDot.style.top = `${posY}px`;
+
+      if (e.target.closest("a, button, .glass")) {
+        cursorDot.style.width = "40px";
+        cursorDot.style.height = "40px";
+        cursorDot.style.opacity = "0.3";
+      } else {
+        cursorDot.style.width = "15px";
+        cursorDot.style.height = "15px";
+        cursorDot.style.opacity = "0.6";
+      }
+    });
+  }
+
+  /* =======================
+     BACKBROUND BLOBS PARALLAX
+     ======================= */
+  const blobs = document.querySelectorAll(".blob");
   window.addEventListener("mousemove", (e) => {
-    const posX = e.clientX;
-    const posY = e.clientY;
+    const x = (e.clientX / window.innerWidth - 0.5) * 60;
+    const y = (e.clientY / window.innerHeight - 0.5) * 60;
 
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
-
-    // Outline with slight lag
-    cursorOutline.animate({
-      left: `${posX}px`,
-      top: `${posY}px`
-    }, { duration: 500, fill: "forwards" });
-
-    // Hover effect
-    if (e.target.closest("a, button, .glass")) {
-      cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
-      cursorOutline.style.borderColor = "var(--secondary-color)";
-    } else {
-      cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
-      cursorOutline.style.borderColor = "var(--primary-color)";
-    }
-  });
-
-  /* =======================
-     PARTICLES BACKGROUND
-     ======================= */
-  const canvas = document.getElementById("particles");
-  const ctx = canvas.getContext("2d");
-  let particlesArray = [];
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2 + 1;
-      this.speedX = Math.random() * 0.5 - 0.25;
-      this.speedY = Math.random() * 0.5 - 0.25;
-    }
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      if (this.x > canvas.width) this.x = 0;
-      else if (this.x < 0) this.x = canvas.width;
-      if (this.y > canvas.height) this.y = 0;
-      else if (this.y < 0) this.y = canvas.height;
-    }
-    draw() {
-      ctx.fillStyle = "rgba(56, 189, 248, 0.3)";
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  function initParticles() {
-    for (let i = 0; i < 60; i++) {
-      particlesArray.push(new Particle());
-    }
-  }
-
-  function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < particlesArray.length; i++) {
-      particlesArray[i].update();
-      particlesArray[i].draw();
-    }
-    requestAnimationFrame(animateParticles);
-  }
-
-  initParticles();
-  animateParticles();
-
-  /* =======================
-     3D TILT EFFECT
-     ======================= */
-  const cards = document.querySelectorAll(".project-card");
-  cards.forEach(card => {
-    card.addEventListener("mousemove", (e) => {
-      if (window.innerWidth <= 768) return;
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = (y - centerY) / 10;
-      const rotateY = (centerX - x) / 10;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+    blobs.forEach((blob, index) => {
+      const speed = (index + 1) * 0.4;
+      blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
     });
   });
 
   /* =======================
-     NAVBAR UTILS
+     NAVBAR & PARALLAX
      ======================= */
-  const navbar = document.querySelector(".navbar");
   const navLinks = document.querySelectorAll(".nav-links a");
   const sections = document.querySelectorAll("section");
+  const heroContent = document.querySelector(".hero-content");
 
-  window.onscroll = () => {
-    // Sticky Navbar
-    if (window.scrollY > 50) {
-      navbar.classList.add("sticky");
-    } else {
-      navbar.classList.remove("sticky");
+  window.addEventListener("scroll", () => {
+    const scrolled = window.pageYOffset;
+    
+    // Hero Parallax
+    if (heroContent) {
+      heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
+      heroContent.style.opacity = 1 - (scrolled / 700);
     }
 
     // Active Link Highlighting
@@ -153,12 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Reveal animations
     revealOnScroll();
-  };
+  });
 
   /* =======================
-     SCROLL REVEAL ANIMATION
+     SCROLL REVEAL (STAGGER)
      ======================= */
   const revealElements = document.querySelectorAll(".reveal");
 
@@ -166,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     revealElements.forEach(el => {
       const windowHeight = window.innerHeight;
       const revealTop = el.getBoundingClientRect().top;
-      const revealPoint = 100;
+      const revealPoint = 80;
 
       if (revealTop < windowHeight - revealPoint) {
         el.classList.add("active");
@@ -175,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         children.forEach((child, index) => {
           setTimeout(() => {
             child.classList.add("active");
-          }, index * 100);
+          }, index * 200); // 200ms Stagger
         });
       }
     });
@@ -196,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
       : '<i class="fas fa-bars"></i>';
   });
 
-  // Close menu on link click
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
       navLinksContainer.classList.remove("active");
@@ -205,24 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =======================
-     RIPPLE EFFECT
-     ======================= */
-  const btns = document.querySelectorAll(".btn");
-  btns.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const x = e.clientX - e.target.offsetLeft;
-      const y = e.clientY - e.target.offsetTop;
-      const ripple = document.createElement("span");
-      ripple.className = "ripple";
-      ripple.style.left = `${x}px`;
-      ripple.style.top = `${y}px`;
-      btn.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
-    });
-  });
-
-  /* =======================
-     TYPING ANIMATION
+     TYPING ANIMATION (SLOW & SMOOTH)
      ======================= */
   const typingEl = document.querySelector(".typing");
   const roles = ["Full Stack Developer", "AI/ML Enthusiast", "Cloud Learner"];
@@ -240,15 +150,15 @@ document.addEventListener("DOMContentLoaded", () => {
       charIndex++;
     }
 
-    let typeSpeed = isDeleting ? 100 : 200;
+    let typeSpeed = isDeleting ? 80 : 150; // Slower typing
 
     if (!isDeleting && charIndex === currentRole.length) {
       isDeleting = true;
-      typeSpeed = 2000;
+      typeSpeed = 3000; // Longer pause at end
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       roleIndex = (roleIndex + 1) % roles.length;
-      typeSpeed = 500;
+      typeSpeed = 1000; // Pause before new word
     }
 
     setTimeout(type, typeSpeed);
