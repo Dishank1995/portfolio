@@ -719,6 +719,14 @@ h1, h2, h3, h4, .logo, .stat-number {
   margin-bottom: 0.8rem;
 }
 
+.project-date {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+
 .project-card h3 {
   font-size: 1.45rem;
   line-height: 1.3;
